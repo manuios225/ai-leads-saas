@@ -24,6 +24,14 @@ function DashboardPage() {
     }
   }
 
+  function goToICP() {
+    router.push("/icp");
+  }
+
+  function goToLeads() {
+    router.push("/leads");
+  }
+
   useEffect(() => {
     async function load() {
       try {
@@ -40,8 +48,30 @@ function DashboardPage() {
 
   return (
     <div style={{ minHeight: "100vh", padding: 32, background: "#e5e7eb" }}>
-      <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 24 }}>
-        <h1 style={{ fontSize: 24, fontWeight: 600 }}>Tableau de bord</h1>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 24 }}>
+        <div>
+          <h1 style={{ fontSize: 24, fontWeight: 600 }}>Tableau de bord</h1>
+          <div style={{ marginTop: 8, display: "flex", gap: 8, fontSize: 14 }}>
+            <button
+              onClick={() => router.push("/dashboard")}
+              style={{ padding: "6px 10px", borderRadius: 6, border: "1px solid #d1d5db", background: "#ffffff", cursor: "pointer" }}
+            >
+              Dashboard
+            </button>
+            <button
+              onClick={goToICP}
+              style={{ padding: "6px 10px", borderRadius: 6, border: "1px solid #d1d5db", background: "#ffffff", cursor: "pointer" }}
+            >
+              ICP
+            </button>
+            <button
+              onClick={goToLeads}
+              style={{ padding: "6px 10px", borderRadius: 6, border: "1px solid #d1d5db", background: "#ffffff", cursor: "pointer" }}
+            >
+              Leads
+            </button>
+          </div>
+        </div>
         <button
           onClick={handleLogout}
           style={{

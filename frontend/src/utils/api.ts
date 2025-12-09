@@ -28,3 +28,37 @@ export async function getDashboardSummary() {
 
   return res.json();
 }
+
+export async function getICP() {
+  const res = await fetch(`${API_URL}/icp`, {
+    method: 'GET',
+  });
+
+  if (!res.ok) {
+    throw new Error('Failed to load ICP');
+  }
+
+  return res.json();
+}
+
+export async function updateICP(payload: {
+  industries: string[];
+  companySizes: string[];
+  jobTitles: string[];
+  regions: string[];
+  description: string;
+}) {
+  const res = await fetch(`${API_URL}/icp`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  });
+
+  if (!res.ok) {
+    throw new Error('Failed to update ICP');
+  }
+
+  return res.json();
+}
