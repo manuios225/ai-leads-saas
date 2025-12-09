@@ -2,11 +2,13 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+
 import { TenantModule } from './modules/tenant/tenant.module';
 import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { AnalyticsModule } from './modules/analytics/analytics.module';
 import { ICPModule } from './modules/icp/icp.module';
+import { LeadsModule } from './modules/leads/leads.module';
 
 @Module({
   imports: [
@@ -25,6 +27,7 @@ import { ICPModule } from './modules/icp/icp.module';
     AuthModule,
     AnalyticsModule,
     ICPModule,
+    LeadsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
