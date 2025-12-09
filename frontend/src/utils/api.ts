@@ -16,3 +16,15 @@ export async function apiLogin(email: string, password: string): Promise<string>
   const data = await res.json();
   return data.access_token as string;
 }
+
+export async function getDashboardSummary() {
+  const res = await fetch(`${API_URL}/analytics/summary`, {
+    method: 'GET',
+  });
+
+  if (!res.ok) {
+    throw new Error('Failed to load analytics');
+  }
+
+  return res.json();
+}

@@ -5,6 +5,7 @@ import { AppService } from './app.service';
 import { TenantModule } from './modules/tenant/tenant.module';
 import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { AnalyticsModule } from './modules/analytics/analytics.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { AuthModule } from './modules/auth/auth.module';
     TenantModule,
     UserModule,
     AuthModule,
+    AnalyticsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
