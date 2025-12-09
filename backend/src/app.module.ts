@@ -6,6 +6,7 @@ import { TenantModule } from './modules/tenant/tenant.module';
 import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { AnalyticsModule } from './modules/analytics/analytics.module';
+import { ICPModule } from './modules/icp/icp.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { AnalyticsModule } from './modules/analytics/analytics.module';
     UserModule,
     AuthModule,
     AnalyticsModule,
+    ICPModule,
   ],
   controllers: [AppController],
   providers: [AppService],
