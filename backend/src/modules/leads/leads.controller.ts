@@ -14,4 +14,9 @@ export class LeadsController {
   async create(@Body() data: any) {
     return this.leadsService.createLead(data);
   }
+
+  @Post('rescore-all')
+  async rescoreAll() {
+    return this.leadsService.rescoreAllLeads();
+  }
 }

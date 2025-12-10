@@ -8,8 +8,9 @@ import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { AnalyticsModule } from './modules/analytics/analytics.module';
 import { ICPModule } from './modules/icp/icp.module';
-import { LeadsModule } from './modules/leads/leads.module';
 import { EnrichmentModule } from './modules/enrichment/enrichment.module';
+import { ScoringModule } from './modules/scoring/scoring.module';
+import { LeadsModule } from './modules/leads/leads.module';
 
 @Module({
   imports: [
@@ -28,8 +29,9 @@ import { EnrichmentModule } from './modules/enrichment/enrichment.module';
     AuthModule,
     AnalyticsModule,
     ICPModule,
-    LeadsModule,
     EnrichmentModule,
+    ScoringModule,
+    LeadsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
