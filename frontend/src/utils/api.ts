@@ -62,3 +62,39 @@ export async function updateICP(payload: {
 
   return res.json();
 }
+
+export async function getLeads() {
+  const res = await fetch(`${API_URL}/leads`, {
+    method: 'GET',
+  });
+
+  if (!res.ok) {
+    throw new Error('Failed to load leads');
+  }
+
+  return res.json();
+}
+
+export async function createLead(payload: {
+  fullName: string;
+  email?: string;
+  jobTitle?: string;
+  company?: string;
+  linkedinUrl?: string;
+  phone?: string;
+  score?: number;
+}) {
+  const res = await fetch(`${API_URL}/leads`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  });
+
+  if (!res.ok) {
+    throw new Error('Failed to create lead');
+  }
+
+  return res.json();
+}
