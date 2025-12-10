@@ -1,47 +1,24 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Lead } from './lead.entity';
 import { Repository } from 'typeorm';
-import { Tenant } from '../tenant/tenant.entity';
+import { Lead } from './lead.entity';
+import { InjectRepository } from '@nestjs/typeorm';
+import { EnrichmentService } from '../enrichment/enrichment.service';
 
 @Injectable()
 export class LeadsService {
   constructor(
     @InjectRepository(Lead)
-    private leadsRepo: Repository<Lead>,
-    @InjectRepository(Tenant)
-    private tenantRepo: Repository<Tenant>,
+    private repo: Repository<Lead>,
+    private enrichment: EnrichmentService,
   ) {}
 
-  async getOrCreateTenant() {
-    let tenant = await this.tenantRepo.findOne({
-      where: { name: 'Default Tenant' },
-    });
-
-    if (!tenant) {
-      tenant = this.tenantRepo.create({ name: 'Default Tenant' });
-      await this.tenantRepo.save(tenant);
-    }
-
-    return tenant;
+  async createLead(data: any) {
+    const enriched = await this.enrichment.enrichLead(data);
+    const lead = this.repo.create(enriched);
+    return this.repo.save(lead);
   }
 
-  async getAllLeads() {
-    const tenant = await this.getOrCreateTenant();
-    return this.leadsRepo.find({
-      where: { tenant },
-      order: { fullName: 'ASC' },
-    });
-  }
-
-  async createLead(data: Partial<Lead>) {
-    const tenant = await this.getOrCreateTenant();
-
-    const lead = this.leadsRepo.create({
-      ...data,
-      tenant,
-    });
-
-    return this.leadsRepo.save(lead);
+  async getLeads() {
+    return this.repo.find();
   }
 }

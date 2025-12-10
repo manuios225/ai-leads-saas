@@ -9,6 +9,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { AnalyticsModule } from './modules/analytics/analytics.module';
 import { ICPModule } from './modules/icp/icp.module';
 import { LeadsModule } from './modules/leads/leads.module';
+import { EnrichmentModule } from './modules/enrichment/enrichment.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { LeadsModule } from './modules/leads/leads.module';
     AnalyticsModule,
     ICPModule,
     LeadsModule,
+    EnrichmentModule,
   ],
   controllers: [AppController],
   providers: [AppService],
